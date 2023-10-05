@@ -9,6 +9,16 @@ class SinglyLinkedList {
   constructor() {
     this.head = null;
     this.tail = null;
+    this.length = 0;
+  }
+  logAsArray() {
+    let current = this.head;
+    const ar = [];
+    while (!!current) {
+      ar.push(current.val);
+      current = current.next;
+    }
+    console.log(ar);
   }
   push(val) {
     if (!this.head) {
@@ -20,15 +30,8 @@ class SinglyLinkedList {
       this.tail = newNode;
       // this.tail = this.tail.next; //OR
     }
-  }
-  logAsArray() {
-    let current = this.head;
-    const ar = [];
-    while (!!current) {
-      ar.push(current.val);
-      current = current.next;
-    }
-    console.log(ar);
+    this.length++;
+    return this;
   }
 }
 
