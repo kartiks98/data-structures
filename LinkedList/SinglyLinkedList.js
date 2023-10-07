@@ -126,8 +126,8 @@ console.log(sLL.push("..."));
 // console.log(sLL.get(1,"Worldz"));
 // console.log(sLL.get(2,"!"));
 // console.log(sLL.get(3,"."));
-// console.log(sLL.get(4,"Should be out of range")); //Invalid Input
-// console.log(sLL.get(6,"Should be out of range")); //Invalid Input
+// console.log(sLL.get(4,"Should be invalid")); //Invalid Input
+// console.log(sLL.get(6,"Should be invalid")); //Invalid Input
 // console.log(sLL.get(-1,"Should be invalid")); //Invalid Input
 // console.log(sLL.get(-3,"Should be invalid")); //Invalid Input
 
@@ -156,8 +156,8 @@ console.log(sLL.push("..."));
 // console.log(sLL.remove(3)); //pop()
 // console.log(sLL.remove(4)); //Invalid Input
 // console.log(sLL.remove(6)); //Invalid Input
-// console.log(sLL.remove(-1,"Should be invalid"));
-// console.log(sLL.remove(-3,"Should be invalid"));
+// console.log(sLL.remove(-1)); //Invalid Input
+// console.log(sLL.remove(-3)); //Invalid Input
 
 // console.log(sLL.reversesLL());
 
