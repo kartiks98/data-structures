@@ -104,6 +104,23 @@ class SinglyLinkedList {
     }
     return current;
   }
+
+  set(ind, val) {
+    const selectedNode = this.get(ind);
+    if (selectedNode === "Invalid Input") return selectedNode;
+    selectedNode.val = val;
+    return this;
+  }
+
+  // insert(ind, val) {
+  //   if (ind === 0) return this.unshift(val);
+  //   if (ind === this.length) return this.push(val);
+  //   const prevNode = this.get(ind - 1);
+  //   const newNode = new Node(val);
+  //   newNode.next = prevNode.next;
+  //   prevNode.next = newNode;
+  //   return this;
+  // }
 }
 
 const sLL = new SinglyLinkedList();
@@ -138,14 +155,14 @@ console.log(sLL.push("..."));
 // console.log(sLL.get(-1)); //Invalid Input
 // console.log(sLL.get(-3)); //Invalid Input
 
-// console.log(sLL.set(0,"Hii"));
-// console.log(sLL.set(1,"Worldz"));
-// console.log(sLL.set(2,"!"));
-// console.log(sLL.set(3,"."));
-// console.log(sLL.set(4,"Should be invalid")); //Invalid Input
-// console.log(sLL.set(6,"Should be invalid")); //Invalid Input
-// console.log(sLL.set(-1,"Should be invalid")); //Invalid Input
-// console.log(sLL.set(-3,"Should be invalid")); //Invalid Input
+// console.log(sLL.set(0, "Hii"));
+// console.log(sLL.set(1, "Worldz"));
+// console.log(sLL.set(2, "!"));
+// console.log(sLL.set(3, "."));
+// console.log(sLL.set(4, "Should be invalid")); //Invalid Input
+// console.log(sLL.set(6, "Should be invalid")); //Invalid Input
+// console.log(sLL.set(-1, "Should be invalid")); //Invalid Input
+// console.log(sLL.set(-3, "Should be invalid")); //Invalid Input
 
 // console.log(sLL.insert(0,"Hii")); //unshift("Hii")
 // console.log(sLL.insert(1,"Worldz"));
