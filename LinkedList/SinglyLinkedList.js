@@ -143,6 +143,8 @@ class SinglyLinkedList {
     // prevNode.next = this.get(ind + 1);
     // return currentNode;
   }
+
+  reverseSLL() {}
 }
 
 const sLL = new SinglyLinkedList();
@@ -205,7 +207,7 @@ console.log(sLL.push("..."));
 // console.log(sLL.remove(-1)); //Invalid Input
 // console.log(sLL.remove(-3)); //Invalid Input
 
-// console.log(sLL.reversesLL());
+// console.log(sLL.reverseSLL());
 
 sLL.logAsArray();
 console.log(sLL);
