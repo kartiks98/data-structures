@@ -112,15 +112,17 @@ class SinglyLinkedList {
     return this;
   }
 
-  // insert(ind, val) {
-  //   if (ind === 0) return this.unshift(val);
-  //   if (ind === this.length) return this.push(val);
-  //   const prevNode = this.get(ind - 1);
-  //   const newNode = new Node(val);
-  //   newNode.next = prevNode.next;
-  //   prevNode.next = newNode;
-  //   return this;
-  // }
+  insert(ind, val) {
+    if (ind === 0) return this.unshift(val);
+    if (ind === this.length) return this.push(val);
+    const prevNode = this.get(ind - 1);
+    if (prevNode == "Invalid Input") return prevNode;
+    const newNode = new Node(val);
+    newNode.next = prevNode.next;
+    prevNode.next = newNode;
+    this.length++;
+    return this;
+  }
 }
 
 const sLL = new SinglyLinkedList();
@@ -164,15 +166,15 @@ console.log(sLL.push("..."));
 // console.log(sLL.set(-1, "Should be invalid")); //Invalid Input
 // console.log(sLL.set(-3, "Should be invalid")); //Invalid Input
 
-// console.log(sLL.insert(0,"Hii")); //unshift("Hii")
-// console.log(sLL.insert(1,"Worldz"));
-// console.log(sLL.insert(2,"!"));
-// console.log(sLL.insert(3,"."));
-// console.log(sLL.insert(4,"End")); //push("End")
-// console.log(sLL.insert(6,"Should be invalid")); //Invalid Input
-// console.log(sLL.insert(8,"Should be invalid")); //Invalid Input
-// console.log(sLL.insert(-1,"Should be invalid")); //Invalid Input
-// console.log(sLL.insert(-3,"Should be invalid")); //Invalid Input
+// console.log(sLL.insert(0, "Hii")); //unshift("Hii")
+// console.log(sLL.insert(1, "Worldz"));
+// console.log(sLL.insert(2, "!"));
+// console.log(sLL.insert(3, "."));
+// console.log(sLL.insert(4, "End")); //push("End")
+// console.log(sLL.insert(5, "Should be invalid")); //Invalid Input
+// console.log(sLL.insert(7, "Should be invalid")); //Invalid Input
+// console.log(sLL.insert(-1, "Should be invalid")); //Invalid Input
+// console.log(sLL.insert(-3, "Should be invalid")); //Invalid Input
 
 // console.log(sLL.remove(0)); //shift()
 // console.log(sLL.remove(1));
