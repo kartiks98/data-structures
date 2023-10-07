@@ -96,6 +96,13 @@ class SinglyLinkedList {
 
   get(ind) {
     if (ind < 0 || ind > this.length - 1) return "Invalid Input";
+    let currentInd = 0;
+    let current = this.head;
+    while (currentInd !== ind) {
+      currentInd++;
+      current = current.next;
+    }
+    return current;
   }
 }
 
@@ -122,14 +129,14 @@ console.log(sLL.push("..."));
 // console.log(sLL.unshift("!"));
 // console.log(sLL.unshift("."));
 
-// console.log(sLL.get(0,"Hii"));
-// console.log(sLL.get(1,"Worldz"));
-// console.log(sLL.get(2,"!"));
-// console.log(sLL.get(3,"."));
-// console.log(sLL.get(4,"Should be invalid")); //Invalid Input
-// console.log(sLL.get(6,"Should be invalid")); //Invalid Input
-// console.log(sLL.get(-1,"Should be invalid")); //Invalid Input
-// console.log(sLL.get(-3,"Should be invalid")); //Invalid Input
+// console.log(sLL.get(0));
+// console.log(sLL.get(1));
+// console.log(sLL.get(2));
+// console.log(sLL.get(3));
+// console.log(sLL.get(4)); //Invalid Input
+// console.log(sLL.get(6)); //Invalid Input
+// console.log(sLL.get(-1)); //Invalid Input
+// console.log(sLL.get(-3)); //Invalid Input
 
 // console.log(sLL.set(0,"Hii"));
 // console.log(sLL.set(1,"Worldz"));
