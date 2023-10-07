@@ -120,6 +120,8 @@ class SinglyLinkedList {
     const newNode = new Node(val);
     newNode.next = prevNode.next;
     prevNode.next = newNode;
+    // prevNode.next = newNode; //OR //NOT RECOMMENDED //NOT WORKING //todo: debug
+    // newNode.next = this.get(ind);
     this.length++;
     return this;
   }
