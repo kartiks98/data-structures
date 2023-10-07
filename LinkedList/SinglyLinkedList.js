@@ -11,6 +11,7 @@ class SinglyLinkedList {
     this.tail = null;
     this.length = 0;
   }
+
   logAsArray() {
     let current = this.head;
     const ar = [];
@@ -20,6 +21,7 @@ class SinglyLinkedList {
     }
     console.log(ar);
   }
+
   push(val) {
     if (!this.head) {
       this.head = new Node(val);
@@ -33,15 +35,17 @@ class SinglyLinkedList {
     this.length++;
     return this;
   }
+
   pop() {
     if (!this.head) return undefined;
     else {
       if (this.length === 1) {
         // if (this.head === this.tail) { //OR
+        const current = this.head;
         this.head = null;
         this.tail = null;
         this.length--;
-        return this.head;
+        return current;
       }
       let current = this.head;
       let pre = this.head;
@@ -62,15 +66,44 @@ class SinglyLinkedList {
       return current;
     }
   }
+
+  shift() {
+    if (!this.head) return undefined;
+    else {
+      if (this.length === 1) {
+        const current = this.head;
+        this.head = null;
+        this.tail = null;
+        this.length--;
+        return current;
+      } else {
+        const current = this.head;
+        this.head = this.head.next;
+        // this.head = current.next; //OR
+        this.length--;
+        return current;
+      }
+    }
+  }
 }
 
 const sLL = new SinglyLinkedList();
-sLL.push("hello");
-sLL.push("World");
-sLL.push("!!!");
-sLL.pop();
-sLL.pop();
-sLL.pop();
+console.log(sLL.push("hello"));
+console.log(sLL.push("World"));
+console.log(sLL.push("!!!"));
+console.log(sLL.push("..."));
+
+// console.log(sLL.pop());
+// console.log(sLL.pop());
+// console.log(sLL.pop());
+// console.log(sLL.pop());
+// console.log(sLL.pop());
+
+// console.log(sLL.shift());
+// console.log(sLL.shift());
+// console.log(sLL.shift());
+// console.log(sLL.shift());
+// console.log(sLL.shift());
 
 sLL.logAsArray();
 console.log(sLL);
