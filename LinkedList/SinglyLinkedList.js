@@ -133,6 +133,7 @@ class SinglyLinkedList {
     if (!prevNode.next) return "Invalid Input";
     const currentNode = prevNode.next;
     prevNode.next = currentNode.next;
+    // prevNode.next = prevNode.next.next; //OR
     this.length--;
     return currentNode;
     // prevNode.next = prevNode.next.next; //OR //if no need to return current removed node
