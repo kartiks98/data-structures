@@ -116,7 +116,7 @@ class SinglyLinkedList {
     if (ind === 0) return this.unshift(val);
     if (ind === this.length) return this.push(val);
     const prevNode = this.get(ind - 1);
-    if (prevNode == "Invalid Input") return prevNode;
+    if (!prevNode.next) return "Invalid Input";
     const newNode = new Node(val);
     newNode.next = prevNode.next;
     prevNode.next = newNode;
@@ -124,6 +124,23 @@ class SinglyLinkedList {
     // newNode.next = this.get(ind);
     this.length++;
     return this;
+  }
+
+  remove(ind) {
+    if (ind === 0) return this.shift();
+    if (ind === this.length - 1) return this.pop();
+    const prevNode = this.get(ind - 1);
+    if (!prevNode.next) return "Invalid Input";
+    const currentNode = prevNode.next;
+    prevNode.next = currentNode.next;
+    this.length--;
+    return currentNode;
+    // prevNode.next = prevNode.next.next; //OR //if no need to return current removed node
+    // this.length--;
+    // const currentNode = this.get(ind); //OR //NOT RECOMMENDED //NOT WORKING //todo: debug
+    // this.length--;
+    // prevNode.next = this.get(ind + 1);
+    // return currentNode;
   }
 }
 
