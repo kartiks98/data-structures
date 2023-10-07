@@ -38,51 +38,47 @@ class SinglyLinkedList {
 
   pop() {
     if (!this.head) return "Invalid Input";
-    else {
-      if (this.length === 1) {
-        // if (this.head === this.tail) { //OR
-        const current = this.head;
-        this.head = null;
-        this.tail = null;
-        this.length--;
-        return current;
-      }
-      let current = this.head;
-      let pre = this.head;
-      // let pre = current; //OR
-      while (!!current.next) {
-        pre = current;
-        current = current.next;
-      }
-      // let current = this.head.next; //OR //NOT RECOMMENDED
-      // let pre = this.head;
-      // while (!!current.next) {
-      //   pre = current;
-      //   current = current.next;
-      // }
-      pre.next = null;
-      this.tail = pre;
+    if (this.length === 1) {
+      // if (this.head === this.tail) { //OR
+      const current = this.head;
+      this.head = null;
+      this.tail = null;
       this.length--;
       return current;
     }
+    let current = this.head;
+    let pre = this.head;
+    // let pre = current; //OR
+    while (!!current.next) {
+      pre = current;
+      current = current.next;
+    }
+    // let current = this.head.next; //OR //NOT RECOMMENDED
+    // let pre = this.head;
+    // while (!!current.next) {
+    //   pre = current;
+    //   current = current.next;
+    // }
+    pre.next = null;
+    this.tail = pre;
+    this.length--;
+    return current;
   }
 
   shift() {
     if (!this.head) return "Invalid Input";
-    else {
-      if (this.length === 1) {
-        const current = this.head;
-        this.head = null;
-        this.tail = null;
-        this.length--;
-        return current;
-      }
+    if (this.length === 1) {
       const current = this.head;
-      this.head = this.head.next;
-      // this.head = current.next; //OR
+      this.head = null;
+      this.tail = null;
       this.length--;
       return current;
     }
+    const current = this.head;
+    this.head = this.head.next;
+    // this.head = current.next; //OR
+    this.length--;
+    return current;
   }
 
   unshift(val) {
@@ -96,6 +92,10 @@ class SinglyLinkedList {
     }
     this.length++;
     return this;
+  }
+
+  get(ind) {
+    if (ind < 0 || ind > this.length - 1) return "Invalid Input";
   }
 }
 
