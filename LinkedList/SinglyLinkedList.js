@@ -76,14 +76,26 @@ class SinglyLinkedList {
         this.tail = null;
         this.length--;
         return current;
-      } else {
-        const current = this.head;
-        this.head = this.head.next;
-        // this.head = current.next; //OR
-        this.length--;
-        return current;
       }
+      const current = this.head;
+      this.head = this.head.next;
+      // this.head = current.next; //OR
+      this.length--;
+      return current;
     }
+  }
+
+  unshift(val) {
+    if (!this.head) {
+      this.head = new Node(val);
+      this.tail = this.head;
+    } else {
+      const newNode = new Node(val);
+      newNode.next = this.head;
+      this.head = newNode;
+    }
+    this.length++;
+    return this;
   }
 }
 
@@ -105,10 +117,10 @@ console.log(sLL.push("..."));
 // console.log(sLL.shift());
 // console.log(sLL.shift()); //Invalid Input
 
-// console.log(sLL.unshift("hello"));
-// console.log(sLL.unshift("World"));
-// console.log(sLL.unshift("!!!"));
-// console.log(sLL.unshift("..."));
+// console.log(sLL.unshift("hii"));
+// console.log(sLL.unshift("Worldz"));
+// console.log(sLL.unshift("!"));
+// console.log(sLL.unshift("."));
 
 // console.log(sLL.get(0,"Hii"));
 // console.log(sLL.get(1,"Worldz"));
@@ -146,6 +158,8 @@ console.log(sLL.push("..."));
 // console.log(sLL.remove(6)); //Invalid Input
 // console.log(sLL.remove(-1,"Should be invalid"));
 // console.log(sLL.remove(-3,"Should be invalid"));
+
+// console.log(sLL.reversesLL());
 
 sLL.logAsArray();
 console.log(sLL);
