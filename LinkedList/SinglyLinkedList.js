@@ -144,7 +144,25 @@ class SinglyLinkedList {
     // return currentNode;
   }
 
-  reverseSLL() {}
+  reverseSLL() {
+    if (!this.head) return "List is empty";
+    // if (this.length === 1) return this; //OR
+    let current = this.head;
+    this.tail = this.head;
+    // this.tail = current; //OR
+    let next = this.head;
+    // let next = current.next; //OR
+    let pre = null;
+    while (next) {
+      current = next;
+      next = next.next;
+      // next = current.next; //OR
+      current.next = pre;
+      pre = current;
+    }
+    this.head = current;
+    return this;
+  }
 }
 
 const sLL = new SinglyLinkedList();
