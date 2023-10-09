@@ -147,20 +147,17 @@ class SinglyLinkedList {
   reverseSLL() {
     if (!this.head) return "List is empty";
     // if (this.length === 1) return this; //OR
-    let current = this.head;
-    this.tail = this.head;
-    // this.tail = current; //OR
     let next = this.head;
-    // let next = current.next; //OR
+    this.head = this.tail;
+    this.tail = next;
     let pre = null;
     while (next) {
-      current = next;
+      const current = next;
       next = next.next;
       // next = current.next; //OR
       current.next = pre;
       pre = current;
     }
-    this.head = current;
     return this;
   }
 }
@@ -225,7 +222,7 @@ console.log(sLL.push("..."));
 // console.log(sLL.remove(-1)); //Invalid Input
 // console.log(sLL.remove(-3)); //Invalid Input
 
-// console.log(sLL.reverseSLL());
+console.log(sLL.reverseSLL());
 
 sLL.logAsArray();
-console.log(sLL);
+// console.log(sLL);
