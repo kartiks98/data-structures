@@ -222,7 +222,7 @@ console.log(sLL.push("..."));
 // console.log(sLL.remove(-1)); //Invalid Input
 // console.log(sLL.remove(-3)); //Invalid Input
 
-console.log(sLL.reverseSLL());
+// console.log(sLL.reverseSLL());
 
 sLL.logAsArray();
-// console.log(sLL);
+console.log(sLL);
