@@ -23,7 +23,19 @@ class DoublyLinkedList {
     console.log(ar);
   }
 
-  push(val) {}
+  push(val) {
+    if (!this.head) {
+      this.head = new Node(val);
+      this.tail = this.head;
+    } else {
+      const newNode = new Node(val);
+      newNode.prev = this.tail;
+      this.tail.next = newNode;
+      this.tail = newNode;
+    }
+    this.length++;
+    return this;
+  }
 
   pop() {}
 
