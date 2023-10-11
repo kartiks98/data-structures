@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "nodemon -x \"cls && node\" ./LinkedList/SinglyLinkedList"
+    "start": "nodemon -x \"cls && node\" ./LinkedList/DoublyLinkedList"
   },
   "keywords": [],
   "author": "",
