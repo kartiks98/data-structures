@@ -87,9 +87,25 @@ class DoublyLinkedList {
     return this;
   }
 
-  get(ind) {}
+  //Same as Sll get
+  get(ind) {
+    if (ind < 0 || ind > this.length - 1) return "Invalid Input";
+    let currentInd = 0;
+    let current = this.head;
+    while (currentInd !== ind) {
+      currentInd++;
+      current = current.next;
+    }
+    return current;
+  }
 
-  set(ind, val) {}
+  //Same as Sll set
+  set(ind, val) {
+    const selectedNode = this.get(ind);
+    if (selectedNode === "Invalid Input") return selectedNode;
+    selectedNode.val = val;
+    return this;
+  }
 
   insert(ind, val) {}
 
@@ -161,4 +177,4 @@ console.log(dLL.push("..."));
 // console.log(dLL.reverseDLL());
 
 dLL.logAsArray();
-console.log(dLL);
+// console.log(dLL);
