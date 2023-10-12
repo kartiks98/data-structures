@@ -73,7 +73,19 @@ class DoublyLinkedList {
     return removedNode;
   }
 
-  unshift(val) {}
+  unshift(val) {
+    if (!this.head) {
+      this.head = new Node(val);
+      this.tail = this.head;
+    } else {
+      const newNode = new Node(val);
+      newNode.next = this.head;
+      this.head.prev = newNode;
+      this.head = newNode;
+    }
+    this.length++;
+    return this;
+  }
 
   get(ind) {}
 
