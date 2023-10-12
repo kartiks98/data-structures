@@ -56,7 +56,22 @@ class DoublyLinkedList {
     return removedNode;
   }
 
-  shift() {}
+  shift() {
+    if (!this.head) return "Invalid Input";
+    if (this.length === 1) {
+      const current = this.head;
+      this.head = null;
+      this.tail = null;
+      this.length--;
+      return current;
+    }
+    const removedNode = this.head;
+    this.head = removedNode.next;
+    // this.head = this.head.next; //OR
+    this.head.prev = null;
+    this.length--;
+    return removedNode;
+  }
 
   unshift(val) {}
 
