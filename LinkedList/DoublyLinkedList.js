@@ -107,9 +107,34 @@ class DoublyLinkedList {
     return this;
   }
 
-  insert(ind, val) {}
+  insert(ind, val) {
+    if (ind === 0) return this.unshift(val);
+    if (ind === this.length) return this.push(val);
+    const prevNode = this.get(ind - 1);
+    if (!prevNode.next) return "Invalid Input";
+    const newNode = new Node(val);
+    const nextNode = prevNode.next;
+    newNode.next = nextNode;
+    nextNode.prev = newNode;
+    newNode.prev = prevNode;
+    prevNode.next = newNode;
+    this.length++;
+    return this;
+  }
 
-  remove(ind) {}
+  remove(ind) {
+    if (ind === 0) return this.shift();
+    if (ind === this.length - 1) return this.pop();
+    const prevNode = this.get(ind - 1);
+    if (!prevNode.next) return "Invalid Input";
+    const currentNode = prevNode.next;
+    const nextNode = currentNode.next;
+    // const nextNode = prevNode.next.next; //OR
+    prevNode.next = nextNode;
+    nextNode.prev = prevNode;
+    this.length--;
+    return currentNode;
+  }
 
   reverseDLL() {}
 }
@@ -177,4 +202,4 @@ console.log(dLL.push("..."));
 // console.log(dLL.reverseDLL());
 
 dLL.logAsArray();
-// console.log(dLL);
+console.log(dLL);
