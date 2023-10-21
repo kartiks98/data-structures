@@ -87,16 +87,43 @@ class DoublyLinkedList {
     return this;
   }
 
-  //Same as Sll get
+  // //Same as Sll get  //OR //NOT RECOMMENDED //NOT OPTIMIZED FOR dLL
+  // get(ind) {
+  //   if (ind < 0 || ind > this.length - 1) return "Invalid Input";
+  //   let currentInd = 0;
+  //   let current = this.head;
+  //   while (currentInd !== ind) {
+  //     currentInd++;
+  //     current = current.next;
+  //   }
+  //   return current;
+  // }
+
+  search(ind, startFromEnd) {
+    if (!startFromEnd) {
+      let currentInd = 0;
+      let current = this.head;
+      while (currentInd !== ind) {
+        currentInd++;
+        current = current.next;
+      }
+      return current;
+    } else {
+      let currentInd = this.length - 1;
+      let current = this.tail;
+      while (currentInd !== ind) {
+        currentInd--;
+        current = current.prev;
+      }
+      return current;
+    }
+  }
+
+  //OPTIMIZED dLL get
   get(ind) {
     if (ind < 0 || ind > this.length - 1) return "Invalid Input";
-    let currentInd = 0;
-    let current = this.head;
-    while (currentInd !== ind) {
-      currentInd++;
-      current = current.next;
-    }
-    return current;
+    if (ind < this.length - 1 / 2) return this.search(ind);
+    else return this.search(ind, true);
   }
 
   //Same as Sll set
