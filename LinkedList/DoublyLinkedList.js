@@ -173,6 +173,21 @@ class DoublyLinkedList {
     }
     return reverseDLL_as_string;
   }
+
+  reverseDLLAsSLL() {
+    if (!this.tail) return "List is empty";
+    let current = this.tail;
+    const tempHead = this.head;
+    this.head = this.tail;
+    this.tail = tempHead;
+    while (current) {
+      current.next = current.prev;
+      const temp = current;
+      current = current.prev;
+      temp.prev = null;
+    }
+    return this;
+  }
 }
 
 const dLL = new DoublyLinkedList();
@@ -236,6 +251,8 @@ console.log(dLL.push("..."));
 // console.log(dLL.remove(-3)); //Invalid Input
 
 // console.log(dLL.reverseDLLAsString());
+
+// console.log(dLL.reverseDLLAsSLL());
 
 dLL.logAsArray();
 console.log(dLL);
