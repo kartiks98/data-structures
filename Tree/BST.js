@@ -6,7 +6,7 @@ class Node {
   }
 }
 
-class SinglyLinkedList {
+class BST {
   constructor() {
     this.root = null;
   }
