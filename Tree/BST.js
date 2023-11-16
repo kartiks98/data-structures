@@ -17,7 +17,8 @@ class BST {
       this.root = newNode;
     } else {
       let current = currentRoot || this.root;
-      if (val >= current.val) {
+      if (val === current.val) return;
+      else if (val > current.val) {
         if (!current.right) current.right = newNode;
         else this.insert(val, current.right);
       } else {
@@ -30,10 +31,11 @@ class BST {
 }
 
 const bst = new BST();
-console.log(bst.insert(6));
-console.log(bst.insert(2));
+console.log(bst.insert(10));
 console.log(bst.insert(5));
-console.log(bst.insert(4));
-console.log(bst.insert(3));
-console.log(bst.insert(1));
+console.log(bst.insert(13));
+console.log(bst.insert(11));
+console.log(bst.insert(2));
+console.log(bst.insert(16));
+console.log(bst.insert(7));
 console.log(bst.insert(5));
