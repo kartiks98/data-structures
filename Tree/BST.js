@@ -55,17 +55,15 @@ class BST {
   find(val, currentRoot) {
     if (!this.root) {
       return "BST is empty";
-    } else {
-      let current = currentRoot || this.root;
-      if (val === current.val) return current;
-      else if (val > current.val) {
-        if (!current.right) return "Value Not Found";
-        else return this.find(val, current.right);
-      } else {
-        if (!current.left) return "Value Not Found";
-        else return this.find(val, current.left);
-      }
     }
+    let current = currentRoot || this.root;
+    if (val === current.val) return current;
+    if (val > current.val) {
+      if (!current.right) return "Value Not Found";
+      return this.find(val, current.right);
+    }
+    if (!current.left) return "Value Not Found";
+    return this.find(val, current.left);
   }
 }
 
