@@ -1,3 +1,5 @@
+const Queue = require("../Queue/Queue");
+
 class Node {
   constructor(val) {
     this.val = val;
@@ -7,8 +9,12 @@ class Node {
 }
 
 class BST {
-  constructor() {
+  constructor(turnOnTraversal) {
     this.root = null;
+    if (turnOnTraversal) {
+      this.queue = new Queue();
+      this.visitedNodes = [];
+    }
   }
 
   insert(val, currentRoot) {
@@ -65,9 +71,37 @@ class BST {
     if (!current.left) return "Value Not Found";
     return this.find(val, current.left);
   }
+
+  bfs() {
+    if (!this.root) return "Tree is empty";
+    if (!this.queue.size && !this.visitedNodes.length) {
+      this.queue.enqueue(this.root);
+      return this.bfs();
+    }
+    if (!this.queue.size && this.visitedNodes.length) {
+      return this.visitedNodes;
+    }
+
+    const nodeToVisit = this.queue.dequeue();
+    this.visitedNodes.push(nodeToVisit);
+    console.log(
+      "vkdjvsdkdvksv",
+      // this.queue,
+      // this.visitedNodes.length,
+      nodeToVisit
+    );
+    if (nodeToVisit.left) {
+      this.queue.enqueue(nodeToVisit.left);
+      this.bfs();
+    } else if (nodeToVisit.right) {
+      this.queue.enqueue(nodeToVisit.right);
+      this.bfs();
+    }
+  }
 }
 
-const bst = new BST();
+// const bst = new BST();
+const bst = new BST(true);
 console.log(bst.insert(10));
 console.log(bst.insert(5));
 console.log(bst.insert(13));
@@ -87,3 +121,5 @@ console.log(bst.insert(5));
 // console.log(bst.find(5));
 // console.log(bst.find(6));
 // console.log(bst.find(9));
+
+console.log(bst.bfs());

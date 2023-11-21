@@ -13,7 +13,7 @@ class Queue {
   }
 
   //Same as Sll push
-  enqueque(val) {
+  enqueue(val) {
     if (!this.first) {
       this.first = new Node(val);
       this.last = this.first;
@@ -56,10 +56,10 @@ class Queue {
 }
 
 const queue = new Queue();
-console.log(queue.enqueque("hello"));
-console.log(queue.enqueque("World"));
-console.log(queue.enqueque("!!!"));
-console.log(queue.enqueque("..."));
+console.log(queue.enqueue("hello"));
+console.log(queue.enqueue("World"));
+console.log(queue.enqueue("!!!"));
+console.log(queue.enqueue("..."));
 
 // console.log(queue.dequeue());
 // console.log(queue.dequeue());
@@ -69,3 +69,5 @@ console.log(queue.enqueque("..."));
 
 queue.logAsArray();
 console.log(queue);
+
+module.exports = Queue;
