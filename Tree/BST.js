@@ -116,4 +116,4 @@ console.log(bst.insert(5));
 // console.log(bst.find(6));
 // console.log(bst.find(9));
 
-console.log(bst.bfs());
+// console.log(bst.bfs());
