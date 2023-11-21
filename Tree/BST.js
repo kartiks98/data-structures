@@ -83,20 +83,14 @@ class BST {
     }
 
     const nodeToVisit = this.queue.dequeue();
-    this.visitedNodes.push(nodeToVisit);
-    console.log(
-      "vkdjvsdkdvksv",
-      // this.queue,
-      // this.visitedNodes.length,
-      nodeToVisit
-    );
+    this.visitedNodes.push(nodeToVisit.val);
     if (nodeToVisit.left) {
       this.queue.enqueue(nodeToVisit.left);
-      this.bfs();
-    } else if (nodeToVisit.right) {
-      this.queue.enqueue(nodeToVisit.right);
-      this.bfs();
     }
+    if (nodeToVisit.right) {
+      this.queue.enqueue(nodeToVisit.right);
+    }
+    return this.bfs();
   }
 }
 
