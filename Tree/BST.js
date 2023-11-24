@@ -1,4 +1,5 @@
 const Queue = require("../Queue/Queue");
+const Stack = require("../Stack/Stack");
 
 class Node {
   constructor(val) {
@@ -9,12 +10,16 @@ class Node {
 }
 
 class BST {
-  constructor(turnOnTraversal) {
+  //OR
+  // constructor(turnOnTraversal) {
+  //   this.root = null;
+  //   if (turnOnTraversal) {
+  //     this.queue = new Queue();
+  //     this.visitedNodes = [];
+  //   }
+  // }
+  constructor() {
     this.root = null;
-    if (turnOnTraversal) {
-      this.queue = new Queue();
-      this.visitedNodes = [];
-    }
   }
 
   insert(val, currentRoot) {
@@ -72,28 +77,60 @@ class BST {
     return this.find(val, current.left);
   }
 
-  bfs() {
-    if (!this.root) return "Tree is empty";
-    if (!this.queue.size && !this.visitedNodes.length) {
-      this.queue.enqueue(this.root);
-      return this.bfs();
-    }
-    if (!this.queue.size && this.visitedNodes.length) return this.visitedNodes;
+  //OR
+  // bfs() {
+  //   if (!this.root) return "Tree is empty";
+  //   if (!this.queue.size && !this.visitedNodes.length) {
+  //     this.queue.enqueue(this.root);
+  //     return this.bfs();
+  //   }
+  //   if (!this.queue.size && this.visitedNodes.length) return this.visitedNodes;
 
-    const nodeToVisit = this.queue.dequeue();
-    this.visitedNodes.push(nodeToVisit.val);
-    if (nodeToVisit.left) {
-      this.queue.enqueue(nodeToVisit.left);
-    }
-    if (nodeToVisit.right) {
-      this.queue.enqueue(nodeToVisit.right);
-    }
-    return this.bfs();
+  //   const nodeToVisit = this.queue.dequeue();
+  //   this.visitedNodes.push(nodeToVisit.val);
+  //   if (nodeToVisit.left) {
+  //     this.queue.enqueue(nodeToVisit.left);
+  //   }
+  //   if (nodeToVisit.right) {
+  //     this.queue.enqueue(nodeToVisit.right);
+  //   }
+  //   return this.bfs();
+  // }
+
+  bfs() {
+    const queue = new Queue();
+    const visitedNodes = [];
+    const traverse = () => {
+      if (!this.root) return "Tree is empty";
+      if (!queue.size && !visitedNodes.length) {
+        queue.enqueue(this.root);
+        return traverse();
+      }
+      if (!queue.size && visitedNodes.length) return visitedNodes;
+
+      const nodeToVisit = queue.dequeue();
+      visitedNodes.push(nodeToVisit.val);
+      if (nodeToVisit.left) {
+        queue.enqueue(nodeToVisit.left);
+      }
+      if (nodeToVisit.right) {
+        queue.enqueue(nodeToVisit.right);
+      }
+      return traverse();
+    };
+    return traverse();
+  }
+
+  dfs() {
+    const stack = new Stack();
+    const visitedNodes = [];
+    const traverse = () => {};
+    return traverse();
   }
 }
 
-// const bst = new BST();
-const bst = new BST(true);
+const bst = new BST();
+// const bst = new BST(true); //OR
 console.log(bst.insert(10));
 console.log(bst.insert(5));
 console.log(bst.insert(13));
@@ -115,3 +152,7 @@ console.log(bst.insert(5));
 // console.log(bst.find(9));
 
 // console.log(bst.bfs());
+// console.log(bst.insert(87));
+// console.log(bst.bfs()); //todo : debug why bfs() is not working after inserting a node after calling bfs() once in case of OR approach when we are storing queue & visitedNodes inside the constructor
+
+// console.log(bst.dfs());
