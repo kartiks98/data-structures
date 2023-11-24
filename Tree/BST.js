@@ -78,9 +78,7 @@ class BST {
       this.queue.enqueue(this.root);
       return this.bfs();
     }
-    if (!this.queue.size && this.visitedNodes.length) {
-      return this.visitedNodes;
-    }
+    if (!this.queue.size && this.visitedNodes.length) return this.visitedNodes;
 
     const nodeToVisit = this.queue.dequeue();
     this.visitedNodes.push(nodeToVisit.val);
