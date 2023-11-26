@@ -68,5 +68,3 @@ console.log(stack.push("..."));
 
 stack.logAsArray();
 console.log(stack);
-
-module.exports = Stack;

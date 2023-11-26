@@ -1,5 +1,4 @@
 const Queue = require("../Queue/Queue");
-const Stack = require("../Stack/Stack");
 
 class Node {
   constructor(val) {
@@ -121,11 +120,40 @@ class BST {
     return traverse();
   }
 
-  dfs() {
-    const stack = new Stack();
+  dfsPreOrder() {
+    if (!this.root) return "Tree is empty";
     const visitedNodes = [];
-    const traverse = () => {};
-    return traverse();
+
+    const traverse = (nodeToVisit) => {
+      visitedNodes.push(nodeToVisit.val);
+      if (nodeToVisit.left) traverse(nodeToVisit.left);
+      if (nodeToVisit.right) traverse(nodeToVisit.right);
+    };
+    return traverse(this.root) || visitedNodes;
+  }
+
+  dfsPostOrder() {
+    if (!this.root) return "Tree is empty";
+    const visitedNodes = [];
+
+    const traverse = (nodeToVisit) => {
+      if (nodeToVisit.left) traverse(nodeToVisit.left);
+      if (nodeToVisit.right) traverse(nodeToVisit.right);
+      visitedNodes.push(nodeToVisit.val);
+    };
+    return traverse(this.root) || visitedNodes;
+  }
+
+  dfsInOrder() {
+    if (!this.root) return "Tree is empty";
+    const visitedNodes = [];
+
+    const traverse = (nodeToVisit) => {
+      if (nodeToVisit.left) traverse(nodeToVisit.left);
+      visitedNodes.push(nodeToVisit.val);
+      if (nodeToVisit.right) traverse(nodeToVisit.right);
+    };
+    return traverse(this.root) || visitedNodes;
   }
 }
 
@@ -155,4 +183,7 @@ console.log(bst.insert(5));
 // console.log(bst.insert(87));
 // console.log(bst.bfs()); //todo : debug why bfs() is not working after inserting a node after calling bfs() once in case of OR approach when we are storing queue & visitedNodes inside the constructor
 
-// console.log(bst.dfs());
+console.log(bst.dfsPreOrder());
+console.log(bst.dfsPreOrder());
+console.log(bst.dfsPostOrder());
+console.log(bst.dfsInOrder());
