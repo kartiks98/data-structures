@@ -166,7 +166,7 @@ console.log(bst.insert(11));
 console.log(bst.insert(2));
 console.log(bst.insert(16));
 console.log(bst.insert(7));
-console.log(bst.insert(5));
+// console.log(bst.insert(5)); //Found Duplicate Value
 
 // console.log(bst.find(10));
 // console.log(bst.find(5));
@@ -183,7 +183,6 @@ console.log(bst.insert(5));
 // console.log(bst.insert(87));
 // console.log(bst.bfs()); //todo : debug why bfs() is not working after inserting a node after calling bfs() once in case of OR approach when we are storing queue & visitedNodes inside the constructor
 
-console.log(bst.dfsPreOrder());
-console.log(bst.dfsPreOrder());
-console.log(bst.dfsPostOrder());
-console.log(bst.dfsInOrder());
+// console.log(bst.dfsPreOrder());
+// console.log(bst.dfsPostOrder());
+// console.log(bst.dfsInOrder());
