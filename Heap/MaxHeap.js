@@ -28,3 +28,7 @@ console.log(maxHeap.insert(18));
 console.log(maxHeap.insert(27));
 console.log(maxHeap.insert(12));
 console.log(maxHeap.insert(55));
+console.log(maxHeap.insert(55));
+console.log(maxHeap.insert(55));
+console.log(maxHeap.insert(45));
+console.log(maxHeap.insert(1));
