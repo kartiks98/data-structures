@@ -18,6 +18,33 @@ class MaxHeap {
     bubbleUp(this.heap.length - 1);
     return this.heap;
   }
+
+  extractMax() {
+    [this.heap[0], this.heap[this.heap.length - 1]] = [
+      this.heap[this.heap.length - 1],
+      this.heap[0],
+    ];
+    const extracteedVal = this.heap.pop();
+    const bubbleDown = (index) => {
+      const childIndexes = [2 * index + 1, 2 * index + 2];
+      const isSwap =
+        this.heap[index] < this.heap[childIndexes[0]] ||
+        this.heap[index] < this.heap[childIndexes[1]];
+      if (isSwap) {
+        const toSwapIndex =
+          this.heap[childIndexes[0]] > this.heap[childIndexes[1]]
+            ? childIndexes[0]
+            : childIndexes[1];
+        [this.heap[index], this.heap[toSwapIndex]] = [
+          this.heap[toSwapIndex],
+          this.heap[index],
+        ];
+        bubbleDown(toSwapIndex);
+      }
+    };
+    bubbleDown(0);
+    return extracteedVal;
+  }
 }
 
 const maxHeap = new MaxHeap();
@@ -43,3 +70,8 @@ console.log(maxHeap.insert(55));
 console.log(maxHeap.insert(1));
 console.log(maxHeap.insert(45));
 console.log(maxHeap.insert(199));
+
+console.log(maxHeap.extractMax());
+console.log(maxHeap.extractMax());
+
+console.log(maxHeap.heap);
