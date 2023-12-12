@@ -71,7 +71,7 @@ console.log(maxHeap.insert(1));
 console.log(maxHeap.insert(45));
 console.log(maxHeap.insert(199));
 
-console.log(maxHeap.extractMax());
-console.log(maxHeap.extractMax());
+// console.log(maxHeap.extractMax());
+// console.log(maxHeap.extractMax());
 
 console.log(maxHeap.heap);
