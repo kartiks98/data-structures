@@ -24,7 +24,8 @@ class MaxHeap {
       this.heap[this.heap.length - 1],
       this.heap[0],
     ];
-    const extracteedVal = this.heap.pop();
+    const extractedVal = this.heap.pop();
+    if (!extractedVal) return "Heap is empty";
     const bubbleDown = (index) => {
       const childIndexes = [2 * index + 1, 2 * index + 2];
       const isSwap =
@@ -32,7 +33,8 @@ class MaxHeap {
         this.heap[index] < this.heap[childIndexes[1]];
       if (isSwap) {
         const toSwapIndex =
-          this.heap[childIndexes[0]] > this.heap[childIndexes[1]]
+          (this.heap[childIndexes[0]] || -Infinity) >
+          (this.heap[childIndexes[1]] || -Infinity)
             ? childIndexes[0]
             : childIndexes[1];
         [this.heap[index], this.heap[toSwapIndex]] = [
@@ -43,7 +45,7 @@ class MaxHeap {
       }
     };
     bubbleDown(0);
-    return extracteedVal;
+    return extractedVal;
   }
 }
 
@@ -67,10 +69,17 @@ console.log(maxHeap.insert(18));
 console.log(maxHeap.insert(27));
 console.log(maxHeap.insert(12));
 console.log(maxHeap.insert(55));
-console.log(maxHeap.insert(1));
-console.log(maxHeap.insert(45));
-console.log(maxHeap.insert(199));
+// console.log(maxHeap.insert(1));
+// console.log(maxHeap.insert(45));
+// console.log(maxHeap.insert(199));
 
+// console.log(maxHeap.extractMax());
+// console.log(maxHeap.extractMax());
+// console.log(maxHeap.extractMax());
+// console.log(maxHeap.extractMax());
+// console.log(maxHeap.extractMax());
+// console.log(maxHeap.extractMax());
+// console.log(maxHeap.extractMax());
 // console.log(maxHeap.extractMax());
 // console.log(maxHeap.extractMax());
 
