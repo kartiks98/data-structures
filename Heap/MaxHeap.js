@@ -33,8 +33,7 @@ class MaxHeap {
         this.heap[index] < this.heap[childIndexes[1]];
       if (isSwap) {
         const toSwapIndex =
-          (this.heap[childIndexes[0]] || -Infinity) >
-          (this.heap[childIndexes[1]] || -Infinity)
+          this.heap[childIndexes[0]] > (this.heap[childIndexes[1]] || -Infinity)
             ? childIndexes[0]
             : childIndexes[1];
         [this.heap[index], this.heap[toSwapIndex]] = [
