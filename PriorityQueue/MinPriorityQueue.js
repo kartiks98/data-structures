@@ -5,7 +5,7 @@ class Node {
   }
 }
 
-class MaxPriorityQueue {
+class MinPriorityQueue {
   constructor() {
     this.heap = [];
   }
@@ -15,7 +15,7 @@ class MaxPriorityQueue {
     this.heap.push(newNode);
     const bubbleUp = (index) => {
       const parentIndex = Math.floor((index - 1) / 2);
-      if (this.heap[index].priority > this.heap[parentIndex]?.priority) {
+      if (this.heap[index].priority < this.heap[parentIndex]?.priority) {
         [this.heap[index], this.heap[parentIndex]] = [
           this.heap[parentIndex],
           this.heap[index],
@@ -37,12 +37,12 @@ class MaxPriorityQueue {
     const bubbleDown = (index) => {
       const childIndexes = [2 * index + 1, 2 * index + 2];
       const isSwap =
-        this.heap[index]?.priority < this.heap[childIndexes[0]]?.priority ||
-        this.heap[index]?.priority < this.heap[childIndexes[1]]?.priority;
+        this.heap[index]?.priority > this.heap[childIndexes[0]]?.priority ||
+        this.heap[index]?.priority > this.heap[childIndexes[1]]?.priority;
       if (isSwap) {
         const toSwapIndex =
-          this.heap[childIndexes[0]]?.priority >
-          (this.heap[childIndexes[1]]?.priority || -Infinity)
+          this.heap[childIndexes[0]]?.priority <
+          (this.heap[childIndexes[1]]?.priority || Infinity)
             ? childIndexes[0]
             : childIndexes[1];
         [this.heap[index], this.heap[toSwapIndex]] = [
@@ -57,23 +57,23 @@ class MaxPriorityQueue {
   }
 }
 
-const maxPriorityQueue = new MaxPriorityQueue();
+const minPriorityQueue = new MinPriorityQueue();
 
-console.log(maxPriorityQueue.enqueue("common cold", 1));
-console.log(maxPriorityQueue.enqueue("gunshot wound", 5));
-console.log(maxPriorityQueue.enqueue("high fever", 2));
-console.log(maxPriorityQueue.enqueue("broken arm", 4));
-console.log(maxPriorityQueue.enqueue("glass in foot", 3));
-// console.log(maxPriorityQueue.enqueue("glass in foot", 3));
-// console.log(maxPriorityQueue.enqueue("glass in foot", 3));
+console.log(minPriorityQueue.enqueue("common cold", 5));
+console.log(minPriorityQueue.enqueue("gunshot wound", 1));
+console.log(minPriorityQueue.enqueue("high fever", 4));
+console.log(minPriorityQueue.enqueue("broken arm", 2));
+console.log(minPriorityQueue.enqueue("glass in foot", 3));
+// console.log(minPriorityQueue.enqueue("glass in foot", 3));
+// console.log(minPriorityQueue.enqueue("glass in foot", 3));
 
-// console.log(maxPriorityQueue.dequeue());
-// console.log(maxPriorityQueue.dequeue());
-// console.log(maxPriorityQueue.dequeue());
-// console.log(maxPriorityQueue.dequeue());
-// console.log(maxPriorityQueue.dequeue());
-// console.log(maxPriorityQueue.dequeue());
-// console.log(maxPriorityQueue.dequeue());
-// console.log(maxPriorityQueue.dequeue());
+// console.log(minPriorityQueue.dequeue());
+// console.log(minPriorityQueue.dequeue());
+// console.log(minPriorityQueue.dequeue());
+// console.log(minPriorityQueue.dequeue());
+// console.log(minPriorityQueue.dequeue());
+// console.log(minPriorityQueue.dequeue());
+// console.log(minPriorityQueue.dequeue());
+// console.log(minPriorityQueue.dequeue());
 
-console.log(maxPriorityQueue.heap);
+console.log(minPriorityQueue.heap);
