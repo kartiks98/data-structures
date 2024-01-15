@@ -24,15 +24,14 @@ class Graph {
     if (!this.adjacencyList[vertex1]) return `Vertex "${vertex1}" not found.`;
     if (!this.adjacencyList[vertex2]) return `Vertex "${vertex2}" not found.`;
 
-    if (!this.adjacencyList[vertex1].size)
-      return `Vertex "${vertex1}" is already empty.`;
-    if (!this.adjacencyList[vertex2].size)
-      return `Vertex "${vertex2}" is already empty.`;
+    const isDirectedAndNotVertexEdge = !this.isDirected || !isVertexEdge;
+    if (!this.adjacencyList[vertex1].has(vertex2))
+      return `Vertex "${vertex1}" don't have an edge with vertex "${vertex2}"`;
 
     this.adjacencyList[vertex1] = new Set(
       Array.from(this.adjacencyList[vertex1]).filter((v) => v !== vertex2)
     );
-    if (!this.isDirected || !isVertexEdge)
+    if (isDirectedAndNotVertexEdge)
       this.adjacencyList[vertex2] = new Set(
         Array.from(this.adjacencyList[vertex2]).filter((v) => v !== vertex1)
       );
@@ -44,25 +43,32 @@ class Graph {
     this.adjacencyList[vertex].forEach((v) => {
       removeEdge(v, vertex, true);
     });
-    this.adjacencyList.delete(vertex);
+    delete this.adjacencyList[vertex];
   }
 }
 
-const graph = new Graph();
+const graph = new Graph(); //Undirected Graph
+// const graph = new Graph(true); //Directed Graph
 
-console.log(graph.addVertex("Tokyo"));
-console.log(graph.addVertex("Moscow"));
-console.log(graph.addVertex("Tokyo"));
-console.log(graph.addVertex("Berlin"));
+// console.log(graph.addVertex("Tokyo"));
+// console.log(graph.addVertex("Moscow"));
+// console.log(graph.addVertex("Tokyo"));
+// console.log(graph.addVertex("Berlin"));
 
-console.log(graph.addEdge("Moscow", "Tokyo"));
-console.log(graph.addEdge("Moscow", "Tokyoo"));
-console.log(graph.addEdge("Moscow", "Berlin"));
-console.log(graph.addEdge("Moscow", "Berlin"));
+// console.log(graph.addEdge("Moscow", "Tokyo"));
+// console.log(graph.addEdge("Moscow", "Tokyoo"));
+// console.log(graph.addEdge("Moscow", "Berlin"));
+// console.log(graph.addEdge("Moscow", "Berlin"));
 
 // console.log(graph.removeEdge("Moscow", "Berlin"));
+// console.log(graph.removeEdge("Tokyo", "Berlin"));
 // console.log(graph.removeEdge("Moscow", "Tokyoo"));
 // console.log(graph.removeEdge("Moscow", "Tokyo"));
 // console.log(graph.removeEdge("Moscow", "Tokyo"));
+
+// console.log(graph.removeVertex("Tokyo"));
+// console.log(graph.removeVertex("Moscow"));
+// console.log(graph.removeVertex("Tokyo"));
+// console.log(graph.removeVertex("Berlin"));
 
 console.log(graph.adjacencyList);
