@@ -14,7 +14,7 @@ class Graph {
     if (!this.adjacencyList[vertex2]) return `Vertex "${vertex2}" not found.`;
 
     if (this.adjacencyList[vertex1].has(vertex2))
-      return `Vertex "${vertex1}" already has a edge with vertex "${vertex2}"`;
+      return `Vertex "${vertex1}" already has an edge with vertex "${vertex2}"`;
 
     this.adjacencyList[vertex1].add(vertex2);
     !this.isDirected && this.adjacencyList[vertex2].add(vertex1);
