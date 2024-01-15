@@ -69,5 +69,6 @@ const graph = new Graph(); //Undirected Graph
 // console.log(graph.removeVertex("Moscow"));
 // console.log(graph.removeVertex("Tokyo"));
 // console.log(graph.removeVertex("Berlin"));
+// console.log(graph.removeVertex("Berlin"));
 
 console.log(graph.adjacencyList);
