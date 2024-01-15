@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Data Structures Fundamentals",
   "scripts": {
-    "start": "nodemon -x \"cls && node\" ./PriorityQueue/MinPriorityQueue"
+    "start": "nodemon -x \"cls && node\" ./Graph/UndirectedGraph"
   },
   "dependencies": {
     "nodemon": "^3.0.1"
