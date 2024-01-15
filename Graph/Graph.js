@@ -24,14 +24,13 @@ class Graph {
     if (!this.adjacencyList[vertex1]) return `Vertex "${vertex1}" not found.`;
     if (!this.adjacencyList[vertex2]) return `Vertex "${vertex2}" not found.`;
 
-    const isDirectedAndNotVertexEdge = !this.isDirected || !isVertexEdge;
     if (!this.adjacencyList[vertex1].has(vertex2))
       return `Vertex "${vertex1}" don't have an edge with vertex "${vertex2}"`;
 
     this.adjacencyList[vertex1] = new Set(
       Array.from(this.adjacencyList[vertex1]).filter((v) => v !== vertex2)
     );
-    if (isDirectedAndNotVertexEdge)
+    if (!this.isDirected || !isVertexEdge)
       this.adjacencyList[vertex2] = new Set(
         Array.from(this.adjacencyList[vertex2]).filter((v) => v !== vertex1)
       );
