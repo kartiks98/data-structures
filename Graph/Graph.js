@@ -40,7 +40,7 @@ class Graph {
     if (!this.adjacencyList[vertex]) return `Vertex "${vertex}" not found.`;
 
     this.adjacencyList[vertex].forEach((v) => {
-      removeEdge(v, vertex, true);
+      this.removeEdge(v, vertex, true);
     });
     delete this.adjacencyList[vertex];
   }
