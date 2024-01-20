@@ -1,3 +1,5 @@
+const Queue = require("../Queue/Queue");
+
 class Graph {
   constructor(isDirected = false) {
     this.adjacencyList = {};
@@ -61,6 +63,32 @@ class Graph {
     };
     return traverse(rootVertex) || traversedNodes;
   }
+
+  bfs(rootVertex) {
+    if (!this.adjacencyList[rootVertex]) return "Graph is empty";
+    const queue = new Queue();
+    const traversedNodes = [];
+    const visitedNodes = {};
+
+    const traverse = () => {
+      if (!queue.size && !traversedNodes.length) {
+        queue.enqueue(rootVertex);
+        return traverse();
+      }
+      if (!queue.size && traversedNodes.length) return traversedNodes;
+
+      const vertex = queue.dequeue();
+      if (!visitedNodes[vertex]) {
+        visitedNodes[vertex] = true;
+        traversedNodes.push(vertex);
+        this.adjacencyList[vertex].forEach((v) => {
+          !visitedNodes[v] && queue.enqueue(v);
+        });
+      }
+      return traverse();
+    };
+    return traverse();
+  }
 }
 
 const graph = new Graph(); //Undirected Graph
@@ -104,5 +132,7 @@ const graph = new Graph(); //Undirected Graph
 // console.log(graph.addEdge("E", "F"));
 
 // console.log(graph.dfs("A"));
+
+// console.log(graph.bfs("A"));
 
 console.log(graph.adjacencyList);
