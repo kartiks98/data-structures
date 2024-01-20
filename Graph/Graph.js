@@ -44,6 +44,23 @@ class Graph {
     });
     delete this.adjacencyList[vertex];
   }
+
+  dfs(rootVertex) {
+    if (!this.adjacencyList[rootVertex]) return "Graph is empty";
+    const traversedNodes = [];
+    const visitedNodes = {};
+
+    const traverse = (vertex) => {
+      if (!visitedNodes[vertex]) {
+        visitedNodes[vertex] = true;
+        traversedNodes.push(vertex);
+        this.adjacencyList[vertex].forEach((v) => {
+          traverse(v);
+        });
+      }
+    };
+    return traverse(rootVertex) || traversedNodes;
+  }
 }
 
 const graph = new Graph(); //Undirected Graph
@@ -70,5 +87,22 @@ const graph = new Graph(); //Undirected Graph
 // console.log(graph.removeVertex("Tokyo"));
 // console.log(graph.removeVertex("Berlin"));
 // console.log(graph.removeVertex("Berlin"));
+
+// console.log(graph.addVertex("A"));
+// console.log(graph.addVertex("B"));
+// console.log(graph.addVertex("C"));
+// console.log(graph.addVertex("D"));
+// console.log(graph.addVertex("E"));
+// console.log(graph.addVertex("F"));
+
+// console.log(graph.addEdge("A", "B"));
+// console.log(graph.addEdge("A", "C"));
+// console.log(graph.addEdge("B", "D"));
+// console.log(graph.addEdge("C", "E"));
+// console.log(graph.addEdge("D", "E"));
+// console.log(graph.addEdge("D", "F"));
+// console.log(graph.addEdge("E", "F"));
+
+// console.log(graph.dfs("A"));
 
 console.log(graph.adjacencyList);
