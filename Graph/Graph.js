@@ -67,14 +67,16 @@ class Graph {
   bfs(rootVertex) {
     if (!this.adjacencyList[rootVertex]) return "Graph is empty";
     const queue = new Queue();
+    queue.enqueue(rootVertex);
     const traversedNodes = [];
     const visitedNodes = {};
 
     const traverse = () => {
-      if (!queue.size && !traversedNodes.length) {
-        queue.enqueue(rootVertex);
-        return traverse();
-      }
+      // //OR //NOT RECOMMENDED //COMPLEX CODE
+      // if (!queue.size && !traversedNodes.length) {
+      //   queue.enqueue(rootVertex);
+      //   return traverse();
+      // }
       if (!queue.size && traversedNodes.length) return traversedNodes;
 
       const vertex = queue.dequeue();
