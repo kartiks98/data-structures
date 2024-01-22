@@ -99,31 +99,31 @@ class DoublyLinkedList {
   //   return current;
   // }
 
-  search(ind, startFromEnd) {
-    if (!startFromEnd) {
-      let currentInd = 0;
-      let current = this.head;
-      while (currentInd !== ind) {
-        currentInd++;
-        current = current.next;
-      }
-      return current;
-    } else {
-      let currentInd = this.length - 1;
-      let current = this.tail;
-      while (currentInd !== ind) {
-        currentInd--;
-        current = current.prev;
-      }
-      return current;
-    }
-  }
-
   //OPTIMIZED dLL get
   get(ind) {
+    const search = (ind, startFromEnd) => {
+      if (!startFromEnd) {
+        let currentInd = 0;
+        let current = this.head;
+        while (currentInd !== ind) {
+          currentInd++;
+          current = current.next;
+        }
+        return current;
+      } else {
+        let currentInd = this.length - 1;
+        let current = this.tail;
+        while (currentInd !== ind) {
+          currentInd--;
+          current = current.prev;
+        }
+        return current;
+      }
+    };
+
     if (ind < 0 || ind > this.length - 1) return "Invalid Input";
-    if (ind < this.length - 1 / 2) return this.search(ind);
-    else return this.search(ind, true);
+    if (ind < this.length - 1 / 2) return search(ind);
+    else return search(ind, true);
   }
 
   //Same as Sll set
