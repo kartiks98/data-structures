@@ -97,14 +97,16 @@ class BST {
   // }
 
   bfs() {
+    if (!this.root) return "Tree is empty";
     const queue = new Queue();
+    queue.enqueue(this.root);
     const visitedNodes = [];
     const traverse = () => {
-      if (!this.root) return "Tree is empty";
-      if (!queue.size && !visitedNodes.length) {
-        queue.enqueue(this.root);
-        return traverse();
-      }
+      //OR //NOT RECOMMENDED //COMPLEX CODE
+      // if (!queue.size && !visitedNodes.length) {
+      //   queue.enqueue(this.root);
+      //   return traverse();
+      // }
       if (!queue.size && visitedNodes.length) return visitedNodes;
 
       const nodeToVisit = queue.dequeue();

@@ -72,7 +72,7 @@ class Graph {
     const visitedNodes = {};
 
     const traverse = () => {
-      // //OR //NOT RECOMMENDED //COMPLEX CODE
+      //OR //NOT RECOMMENDED //COMPLEX CODE
       // if (!queue.size && !traversedNodes.length) {
       //   queue.enqueue(rootVertex);
       //   return traverse();
